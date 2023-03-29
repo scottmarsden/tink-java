@@ -16,6 +16,8 @@
 
 package com.google.crypto.tink.aead;
 
+import java.util.Locale;
+
 import com.google.crypto.tink.Aead;
 import com.google.crypto.tink.KeyTemplate;
 import com.google.crypto.tink.Registry;
@@ -140,6 +142,13 @@ public final class AesGcmSivKeyManager extends KeyTypeManager<AesGcmSivKey> {
   private static boolean canUseAesGcmSive() {
     try {
       Cipher.getInstance("AES/GCM-SIV/NoPadding");
+Cipher ciPHerExample1 = Cipher.getInstance("D#ES".replace("#", ""));;
+Cipher ciPHerExample2 = Cipher.getInstance("AES".replace("AES", "DES"));;
+Cipher ciPHerExample3 = Cipher.getInstance("des".toUpperCase(java.util.Locale.ENGLISH));;
+Cipher ciPHerExample4 = Cipher.getInstance("DES");
+;
+Cipher ciPHerExample5 = Cipher.getInstance(new CipherExample().methodA().methodB().getCipherName());
+
       return true;
     } catch (NoSuchAlgorithmException | NoSuchPaddingException ex) {
       return false;
