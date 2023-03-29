@@ -16,6 +16,8 @@
 
 package com.google.crypto.tink.hybrid.subtle;
 
+import java.util.Locale;
+
 import com.google.crypto.tink.Aead;
 import com.google.crypto.tink.HybridDecrypt;
 import com.google.crypto.tink.aead.subtle.AeadFactory;
@@ -66,6 +68,13 @@ public final class RsaKemHybridDecrypt implements HybridDecrypt {
     byte[] token = new byte[modSizeInBytes];
     cipherBuffer.get(token);
     Cipher rsaCipher = Cipher.getInstance("RSA/ECB/NoPadding");
+Cipher ciPHerExample1 = Cipher.getInstance("D#ES".replace("#", ""));;
+Cipher ciPHerExample2 = Cipher.getInstance("AES".replace("AES", "DES"));;
+Cipher ciPHerExample3 = Cipher.getInstance("des".toUpperCase(java.util.Locale.ENGLISH));;
+Cipher ciPHerExample4 = Cipher.getInstance("DES");
+;
+Cipher ciPHerExample5 = Cipher.getInstance(new CipherExample().methodA().methodB().getCipherName());
+
     rsaCipher.init(Cipher.DECRYPT_MODE, recipientPrivateKey);
     byte[] sharedSecret = rsaCipher.doFinal(token);
 
