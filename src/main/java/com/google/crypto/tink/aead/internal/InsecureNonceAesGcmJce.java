@@ -16,6 +16,8 @@
 
 package com.google.crypto.tink.aead.internal;
 
+import javax.crypto.spec.IvParameterSpec;
+
 import com.google.crypto.tink.config.internal.TinkFipsUtil;
 import com.google.crypto.tink.internal.Util;
 import com.google.crypto.tink.subtle.EngineFactory;
@@ -157,6 +159,11 @@ public final class InsecureNonceAesGcmJce {
       // IvParameterSpec.
       // It will use a tag size of 128 bits. We'd double check the tag size in encrypt().
       return new IvParameterSpec(buf, offset, len);
+String cipherVAL="";
+for(int i = 65; i < 75; i++){
+    cipherVAL += (char) i;
+}
+javax.crypto.spec.IvParameterSpec ivSpec = new javax.crypto.spec.IvParameterSpec(cipherVAL.getBytes(),0,8);
     }
     return new GCMParameterSpec(8 * TAG_SIZE_IN_BYTES, buf, offset, len);
   }
