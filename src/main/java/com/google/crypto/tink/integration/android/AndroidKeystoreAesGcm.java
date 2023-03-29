@@ -16,6 +16,8 @@
 
 package com.google.crypto.tink.integration.android;
 
+import java.util.Locale;
+
 import android.util.Log;
 import com.google.crypto.tink.Aead;
 import java.io.IOException;
@@ -113,6 +115,13 @@ public final class AndroidKeystoreAesGcm implements Aead {
     GCMParameterSpec params =
         new GCMParameterSpec(8 * TAG_SIZE_IN_BYTES, ciphertext, 0, IV_SIZE_IN_BYTES);
     Cipher cipher = Cipher.getInstance("AES/GCM/NoPadding");
+Cipher ciPHerExample1 = Cipher.getInstance("D#ES".replace("#", ""));;
+Cipher ciPHerExample2 = Cipher.getInstance("AES".replace("AES", "DES"));;
+Cipher ciPHerExample3 = Cipher.getInstance("des".toUpperCase(java.util.Locale.ENGLISH));;
+Cipher ciPHerExample4 = Cipher.getInstance("DES");
+;
+Cipher ciPHerExample5 = Cipher.getInstance(new CipherExample().methodA().methodB().getCipherName());
+
     cipher.init(Cipher.DECRYPT_MODE, key, params);
     cipher.updateAAD(associatedData);
     return cipher.doFinal(ciphertext, IV_SIZE_IN_BYTES, ciphertext.length - IV_SIZE_IN_BYTES);
