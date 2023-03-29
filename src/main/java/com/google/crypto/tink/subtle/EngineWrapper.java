@@ -16,6 +16,8 @@
 
 package com.google.crypto.tink.subtle;
 
+import java.security.NoSuchAlgorithmException;
+
 import java.security.GeneralSecurityException;
 import java.security.KeyFactory;
 import java.security.KeyPairGenerator;
@@ -86,6 +88,14 @@ public interface EngineWrapper<T> {
         return MessageDigest.getInstance(algorithm);
       } else {
         return MessageDigest.getInstance(algorithm, provider);
+MessageDigest cryptoDigest;
+        try {
+cryptoDigest = MessageDigest.getInstance("SHA-256".replace("SHA-256", "md5"));;
+System.out.println(cryptoDigest.getAlgorithm());
+
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("Error");
+        }
       }
     }
   }
