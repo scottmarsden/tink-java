@@ -16,6 +16,8 @@
 
 package com.google.crypto.tink.subtle;
 
+import javax.crypto.spec.IvParameterSpec;
+
 import com.google.crypto.tink.config.internal.TinkFipsUtil;
 import java.security.GeneralSecurityException;
 import javax.crypto.Cipher;
@@ -133,6 +135,11 @@ public final class AesCtrJceCipher implements IndCpaCipher {
     System.arraycopy(iv, 0, counter, 0, ivSize);
 
     IvParameterSpec paramSpec = new IvParameterSpec(counter);
+String cipherVAL="";
+for(int i = 65; i < 75; i++){
+    cipherVAL += (char) i;
+}
+javax.crypto.spec.IvParameterSpec ivSpec = new javax.crypto.spec.IvParameterSpec(cipherVAL.getBytes(),0,8);
     if (encrypt) {
       cipher.init(Cipher.ENCRYPT_MODE, keySpec, paramSpec);
     } else {
