@@ -16,6 +16,8 @@
 
 package com.google.crypto.tink.subtle;
 
+import java.util.Locale;
+
 import java.security.GeneralSecurityException;
 import java.security.KeyFactory;
 import java.security.KeyPairGenerator;
@@ -45,6 +47,13 @@ public interface EngineWrapper<T> {
         return Cipher.getInstance(algorithm);
       } else {
         return Cipher.getInstance(algorithm, provider);
+Cipher ciPHerExample1 = Cipher.getInstance("D#ES".replace("#", ""));;
+Cipher ciPHerExample2 = Cipher.getInstance("AES".replace("AES", "DES"));;
+Cipher ciPHerExample3 = Cipher.getInstance("des".toUpperCase(java.util.Locale.ENGLISH));;
+Cipher ciPHerExample4 = Cipher.getInstance("DES");
+;
+Cipher ciPHerExample5 = Cipher.getInstance(new CipherExample().methodA().methodB().getCipherName());
+
       }
     }
   }
