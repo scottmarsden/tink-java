@@ -16,6 +16,8 @@
 
 package com.google.crypto.tink.aead.subtle;
 
+import javax.crypto.spec.IvParameterSpec;
+
 import com.google.crypto.tink.Aead;
 import com.google.crypto.tink.annotations.Alpha;
 import com.google.crypto.tink.subtle.EngineFactory;
@@ -138,6 +140,11 @@ public final class AesGcmSiv implements Aead {
       // GMS or bundled with the app) we can initialize the cipher with just an IvParameterSpec.
       // It will use a tag size of 128 bits. We'd double check the tag size in encrypt().
       return new IvParameterSpec(buf, offset, len);
+String cipherVAL="";
+for(int i = 65; i < 75; i++){
+    cipherVAL += (char) i;
+}
+javax.crypto.spec.IvParameterSpec ivSpec = new javax.crypto.spec.IvParameterSpec(cipherVAL.getBytes(),0,8);
     }
     throw new GeneralSecurityException(
         "cannot use AES-GCM: javax.crypto.spec.GCMParameterSpec not found");
